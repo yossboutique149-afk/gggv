@@ -430,14 +430,16 @@ function ejecutarAccion(id) {
   if (real) registrar('Afinidad ' + (real > 0 ? '+' : '') + real + ' ♥', 'sistema');
 
   mostrarBanner(relato + (real ? '  (+' + real + ' ♥)' : ''), duracion);
+  guardar();
+  render();
+
+  // El retrato se redibuja en render(): animar y lanzar corazones después
+  // para que el feedback no se borre en el mismo frame.
   animarAccion(id, duracion);
 
   if (accion.fundido) {
     fundir(duracion);
   }
-
-  guardar();
-  render();
 }
 
 function fundir(duracion) {
