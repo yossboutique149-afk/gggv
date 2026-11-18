@@ -36,11 +36,11 @@ configurations {
     runtimeClasspath { resolutionStrategy.activateDependencyLocking() }
 }
 
-// Version es parcheadas de las librerías transitivas que aporta Minecraft.
+// Versiones parcheadas de las librerias transitivas que aporta Minecraft.
 // El mod no las empaqueta: en el juego las provee el propio Minecraft. Fijarlas
-// aquí deja el lockfile libre de advisories conocidos y evita compilar contra
-// APIs ya vulnerablaes.
-def libreríasParcheadas = [
+// deja el lockfile libre de advisories conocidos y evita compilar contra APIs
+// ya vulnerables. Ver README para el detalle del runtime del juego.
+def libreriasParcheadas = [
     'io.netty:netty-buffer:4.1.137.Final',
     'io.netty:netty-codec:4.1.137.Final',
     'io.netty:netty-common:4.1.137.Final',
@@ -55,8 +55,8 @@ def libreríasParcheadas = [
 ]
 
 ['compileClasspath', 'runtimeClasspath'].each { nombre ->
-    configur ations.named(nombre).resolutionStrategy {
-        libreríasParcheadas.each { coordenada -> force coordenada }
+    configurations.named(nombre).resolutionStrategy {
+        libreriasParcheadas.each { coordenada -> force coordenada }
     }
 }
 
