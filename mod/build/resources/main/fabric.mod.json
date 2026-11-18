@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "elylang",
+  "version": "1.0.0",
+  "name": "Ely, compañera del alma",
+  "description": "Una compañera enamorada del jugador: amuleto para dialogar, afinidad, acciones (picar, minar, proteger) y romance no explícito. El jugador elige su género.",
+  "authors": [
+    "AppJet"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/elylang/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.appjet.ely.ElyMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.1",
+    "java": ">=21"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "item.elylang.amuleto_corazon": "Heart Amulet",
+
+  "elylang.bienvenida": "You received the Heart Amulet. Ely watches you from the trees.",
+  "elylang.genero.pedir": "Ely has no fixed form yet. Which gender do you want for your companion?",
+  "elylang.genero.opcion.femenino": "Girl",
+  "elylang.genero.opcion.masculino": "Boy",
+  "elylang.genero.opcion.neutro": "Non-binary",
+  "elylang.genero.elegido": "Ely now introduces themself as %s.",
+  "elylang.genero.invalido": "Invalid gender. Use femenino, masculino or neutro.",
+  "elylang.genero.actual": "Ely's current gender: %s",
+
+  "elylang.presentacion.femenino": "I am Ely, guardian of this forest. I have been here since before you arrived.",
+  "elylang.presentacion.masculino": "I am Ely, guardian of this forest. I have been here since before you arrived.",
+  "elylang.presentacion.neutro": "I am Ely, spirit of this forest. I have been here since before you arrived.",
+
+  "elylang.estado.0": "Wary",
+  "elylang.estado.1": "Curious",
+  "elylang.estado.2": "Fond",
+  "elylang.estado.3": "In love",
+  "elylang.estado.4": "Hopelessly in love",
+
+  "elylang.cabecera": "✦ Ely · %s (%s/100)",
+  "elylang.hover.elegir": "Choose this reply",
+  "elylang.dialogo.afinidad": "Affinity %s%d → now %d/100",
+  "elylang.cierre": "You close the dialogue. Ely stays there, in case you come back.",
+  "elylang.menu.titulo": "▬ Ely ▬",
+  "elylang.menu.ayuda": "Actions: /ely picar · minar · proteger · flor · caricia · intimidad",
+
+  "elylang.nodo.raiz": "I am glad you are here. What would you like to talk about?",
+  "elylang.nodo.saludo": "Every time you return the world feels warmer. I have been looking after your things while you slept.",
+  "elylang.nodo.cuidado": "Nobody had ever asked me that before… you. You take care of me. Stay a little longer, will you?",
+  "elylang.nodo.bosque": "The trees whisper your name when you walk by. I tell them to be quiet, but they never listen.",
+  "elylang.nodo.arbol": "I already did. It grew right where I buried the first flower you gave me. One day I will show you the way.",
+  "elylang.nodo.pasado": "I have guarded this forest long before you arrived. I was alone… and then you lit a torch at midnight and spoke to me as if I were someone.",
+  "elylang.nodo.nosotros": "We are… whatever you want to call it. I call it «my favourite person in the whole world».",
+  "elylang.nodo.futuro": "I want to watch sunrises with you. I want a house, a garden and two beds. Well… or one.",
+  "elylang.nodo.adios": "Do not take long, okay? I will be waiting by the campfire.",
+  "elylang.nodo.fin": "Ely smiles and looks away so you cannot see them blush.",
+
+  "elylang.opc.raiz.1": "Who are you?",
+  "elylang.opc.raiz.2": "How are you today?",
+  "elylang.opc.raiz.3": "Tell me about the forest",
+  "elylang.opc.raiz.4": "What brought you to me?",
+  "elylang.opc.raiz.5": "What are we, you and I?",
+  "elylang.opc.raiz.6": "What do you want for the future?",
+  "elylang.opc.raiz.7": "I just wanted to see you",
+
+  "elylang.opc.quien.1": "Nice to meet you",
+  "elylang.opc.quien.2": "We already knew each other",
+
+  "elylang.opc.saludo.1": "Thank you for looking after me",
+  "elylang.opc.saludo.2": "And who looks after you?",
+  "elylang.opc.saludo.3": "You are very sweet",
+
+  "elylang.opc.cuidado.1": "I will stay",
+  "elylang.opc.cuidado.2": "Always",
+
+  "elylang.opc.bosque.1": "Do you talk to them about me?",
+  "elylang.opc.bosque.2": "Plant one for me",
+  "elylang.opc.bosque.3": "I like that they talk about me",
+
+  "elylang.opc.arbol.1": "I will see it with you",
+
+  "elylang.opc.pasado.1": "You are",
+  "elylang.opc.pasado.2": "Sorry if I scared you",
+  "elylang.opc.pasado.3": "I do not remember that night",
+
+  "elylang.opc.nosotros.1": "You are my favourite person",
+  "elylang.opc.nosotros.2": "Let us take it slow",
+  "elylang.opc.nosotros.3": "We are just friends",
+
+  "elylang.opc.futuro.1": "One bed is fine",
+  "elylang.opc.futuro.2": "Let us build the house",
+  "elylang.opc.futuro.3": "It is still early",
+
+  "elylang.opc.adios.1": "I will be back soon",
+  "elylang.opc.fin.1": "Close the dialogue",
+
+  "elylang.accion.picar.ok": "Ely chops %d logs and the wood falls at your feet.",
+  "elylang.accion.picar.vacio": "No logs nearby. Get closer to a forest.",
+  "elylang.accion.minar.ok": "Ely digs a tunnel and hands you %d ores.",
+  "elylang.accion.minar.vacio": "No ores nearby. Go a little deeper.",
+  "elylang.accion.proteger.ok": "Ely stands in front of you. The air smells of ozone and flowers.",
+  "elylang.accion.flor.ok": "You give Ely a flower. They tuck it behind their ear without a word.",
+  "elylang.accion.caricia.ok": "You brush a strand of hair from their face. Ely is speechless.",
+  "elylang.accion.intimidad.ok": "Ely hugs you and the world goes quiet.",
+  "elylang.accion.intimidad.fundido": "The screen fades to black…",
+  "elylang.accion.intimidad.despertar": "Morning comes. Ely looks at you as if you were the only thing that matters.",
+
+  "elylang.error.afinidad": "Ely does not trust you enough yet (needs affinity 80).",
+  "elylang.error.noche": "Ely only wants that at night. Wait for sunset.",
+  "elylang.error.adulto": "First confirm with /ely adulto that you are 18 or older.",
+  "elylang.error.espera": "Ely needs to rest for a while.",
+
+  "elylang.estado.linea": "Affinity: %s (%d/100) · Gender: %s",
+  "elylang.amuleto.devuelto": "Ely hands you back the Heart Amulet.",
+  "elylang.adulto.confirmado": "Confirmed: 18 or older. Ely looks at you with more trust."
+}
