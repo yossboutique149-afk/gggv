@@ -131,7 +131,7 @@ body {
 
 .retrato {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
 }
 
@@ -214,8 +214,8 @@ body {
 }
 
 @keyframes subir {
-  0% { transform: translateY(0) scale(0.6); opacity: 0; }
-  15% { opacity: 1; }
+  0% { transform: translateY(0) scale(0.6); opacity: 0.95; }
+  70% { opacity: 0.9; }
   100% { transform: translateY(-90px) scale(1.25); opacity: 0; }
 }
 
