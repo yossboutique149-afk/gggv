@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Ely, compañera del alma (Recursos)",
+    "description": "Texturas y textos del amuleto del corazón.",
+    "uuid": "a1d7c3e8-9b42-4c05-8e6f-0b3a5d2c7f91",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "d9f2b6a4-7c51-4e38-9a0d-1f6e8b3c2d57",
+      "version": [1, 0, 0]
+    }
+  ]
+}
