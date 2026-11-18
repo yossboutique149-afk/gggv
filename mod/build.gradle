@@ -28,6 +28,14 @@ processResources {
     }
 }
 
+// Bloqueo de dependencias: permite generar mod/gradle.lockfile, que es el
+// fichero que los escáneres de vulnerabilidades (OSV, Dependabot) pueden leer.
+// Generarlo con: gradle build --write-locks
+configurations {
+    compileClasspath { resolutionStrategy.activateDependencyLocking() }
+    runtimeClasspath { resolutionStrategy.activateDependencyLocking() }
+}
+
 tasks.withType(JavaCompile).configureEach {
     it.options.release = 21
 }
