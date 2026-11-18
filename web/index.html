@@ -16,9 +16,8 @@
 
     <main class="rejilla">
       <section class="panel ficha" aria-label="Ficha de Ely">
-        <div class="retrato" id="retrato" aria-hidden="true">
-          <span class="corazon">&#9829;</span>
-        </div>
+        <div class="retrato" id="retrato" data-genero="femenino" role="img" aria-label="Retrato de Ely"></div>
+        <p class="skin-nota">Skin pixel art · cambia con el género</p>
         <h2 id="nombre">Ely</h2>
         <p class="estado-afectivo" id="estadoAfectivo">Curiosidad</p>
 
@@ -40,6 +39,8 @@
           <input type="checkbox" id="chkAdulto">
           <span>Confirmo que soy mayor de 18 años y que esto es ficción.</span>
         </label>
+
+        <button id="btnNoche" class="boton primario ancho" type="button">💗 Pasar la noche con Ely</button>
       </section>
 
       <section class="panel dialogo" aria-label="Diálogo con Ely">
@@ -51,6 +52,10 @@
 
     <section class="panel acciones-panel" aria-label="Acciones de Ely">
       <p class="etiqueta">Acciones</p>
+      <div id="banner" class="banner" role="status" aria-live="polite" hidden>
+        <p id="bannerTexto"></p>
+        <div class="banner-barra"><div id="bannerRelleno"></div></div>
+      </div>
       <div id="acciones" class="acciones"></div>
     </section>
 

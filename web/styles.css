@@ -129,10 +129,139 @@ body {
   65% { transform: scale(0.98); }
 }
 
-.retrato .corazon {
-  font-size: 44px;
+.retrato {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.retrato svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.retrato .ojo {
+  transform-origin: center;
+  animation: parpadeo 7s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.12); }
+}
+
+.retrato .rubor {
+  transition: opacity 600ms ease;
+}
+
+.retrato .brazo-der {
+  transform-origin: 68px 64px;
+}
+
+.retrato .brazo-izq {
+  transform-origin: 28px 64px;
+}
+
+.retrato.act-picar .brazo-der {
+  animation: golpe 900ms ease 3;
+}
+
+.retrato.act-minar .brazo-der {
+  animation: golpe 700ms ease 4;
+}
+
+.retrato.act-proteger .brazo-der {
+  animation: escudo 1100ms ease 3;
+}
+
+.retrato.act-flor .brazo-der {
+  animation: ofrecer 1200ms ease 3;
+}
+
+.retrato.act-caricia .brazo-izq {
+  animation: ofrecer 1400ms ease 3;
+}
+
+.retrato.act-intimidad {
+  animation: latido 1400ms ease 3;
+}
+
+@keyframes golpe {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(-46deg); }
+  70% { transform: rotate(12deg); }
+}
+
+@keyframes escudo {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-70deg) translateY(-4px); }
+}
+
+@keyframes ofrecer {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-28deg) translateY(-3px); }
+}
+
+.corazon-flotante {
+  position: absolute;
+  bottom: 8px;
+  font-size: 18px;
   color: var(--rosa);
-  text-shadow: 0 0 12px rgba(255, 95, 158, 0.7);
+  text-shadow: 0 0 8px rgba(255, 95, 158, 0.9);
+  animation: subir 5.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes subir {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-90px) scale(1.25); opacity: 0; }
+}
+
+.skin-nota {
+  margin: -6px 0 12px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+}
+
+.boton.ancho {
+  width: 100%;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.banner {
+  background: #141110;
+  border-left: 4px solid var(--rosa);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.banner.activo {
+  opacity: 1;
+}
+
+.banner p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #ffd7e7;
+}
+
+.banner-barra {
+  height: 4px;
+  background: #2a2220;
+  overflow: hidden;
+}
+
+.banner-barra > div {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--rosa), var(--ambar));
 }
 
 .ficha h2 {
