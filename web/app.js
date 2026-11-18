@@ -9,12 +9,19 @@ const MAX_AFINIDAD = 100;
 const MAX_REGISTRO = 40;
 
 const SABOR_ACCION = {
-  picar: 'Ely golpea la base de los troncos y la madera cae a tus pies.',
-  minar: 'Ely abre un túnel corto y te pasa un puñado de menas.',
-  proteger: 'Ely se planta delante de ti: el aire huele a ozono y a flores.',
-  flor: 'Le entregas una flor. Ely se la guarda en el pelo sin decir nada.',
-  caricia: 'Le apartas un mechón de la cara. Ely se queda sin palabras.',
-  intimidad: 'La pantalla se funde a negro. No se muestra nada explícito.'
+  picar: 'Ely levanta el hacha, golpea la base del tronco y la madera cae a tus pies. Se seca el sudor de la frente y te guiña un ojo: «¿Sigo?».',
+  minar: 'Ely abre un túnel recto en la roca y va sacando menas una a una, dejándolas en fila a tus pies como un regalo.',
+  proteger: 'Ely se planta delante de ti y abre los brazos: el aire huele a ozono y a flores. Los monstruos retroceden.',
+  flor: 'Le entregas una flor del bosque. Ely se la guarda en el pelo sin decir nada, pero no deja de mirarte.',
+  caricia: 'Le apartas un mechón de la cara. Ely se queda sin palabras y se apoya un segundo en tu mano.',
+  intimidad: 'Ely te toma de la mano y apaga la antorcha. El bosque se queda en silencio; solo se oyen corazones y respiraciones. Al amanecer sigue a tu lado.'
+};
+
+// Paleta del skin pixel art de Ely. Cambia según el género elegido.
+const SKIN = {
+  femenino: { pelo: '#8a5a2b', pelo2: '#6d4520', ropa: '#4f8a5b', ropa2: '#3c6b46', melena: 'largo', lazo: '#ff5f9e' },
+  masculino: { pelo: '#4a3323', pelo2: '#35241a', ropa: '#3f6f4a', ropa2: '#2f5538', melena: 'corto', lazo: '#ffcf6b' },
+  neutro: { pelo: '#6a5a8a', pelo2: '#514470', ropa: '#5a6f8a', ropa2: '#455a73', melena: 'medio', lazo: '#7fd1ff' }
 };
 
 let datos = null;
@@ -115,6 +122,116 @@ function latir() {
   retrato.classList.add('latido');
 }
 
+function renderRetrato() {
+  const caja = $('#retrato');
+  if (!caja) return;
+
+  const genero = generoActual().id;
+  const pal = SKIN[genero] || SKIN.neutro;
+  const rubor = Math.min(0.9, 0.15 + estado.afinidad / 120);
+
+  let melena = '';
+  if (pal.melena === 'largo') {
+    melena =
+      '<rect x="26" y="42" width="9" height="30" fill="' + pal.pelo + '"/>' +
+      '<rect x="61" y="42" width="9" height="30" fill="' + pal.pelo + '"/>' +
+      '<rect x="30" y="24" width="36" height="10" fill="' + pal.pelo + '"/>';
+  } else if (pal.melena === 'medio') {
+    melena =
+      '<rect x="28" y="42" width="6" height="20" fill="' + pal.pelo + '"/>' +
+      '<rect x="62" y="42" width="6" height="20" fill="' + pal.pelo + '"/>' +
+      '<rect x="30" y="24" width="36" height="10" fill="' + pal.pelo + '"/>';
+  } else {
+    melena = '<rect x="30" y="22" width="36" height="9" fill="' + pal.pelo + '"/>';
+  }
+
+  const flequillo =
+    '<rect x="31" y="30" width="12" height="5" fill="' + pal.pelo2 + '"/>' +
+    '<rect x="47" y="30" width="9" height="5" fill="' + pal.pelo2 + '"/>';
+
+  caja.dataset.genero = genero;
+  caja.innerHTML =
+    '<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">' +
+    '<defs><linearGradient id="cieloEly" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0" stop-color="#3a1f30"/><stop offset="1" stop-color="#1a1018"/></linearGradient></defs>' +
+    '<rect width="96" height="96" fill="url(#cieloEly)"/>' +
+    '<rect x="0" y="74" width="96" height="22" fill="#241a22"/>' +
+    '<rect x="8" y="70" width="6" height="6" fill="#3b2b3a"/>' +
+    '<rect x="80" y="70" width="6" height="6" fill="#3b2b3a"/>' +
+    '<rect x="28" y="62" width="40" height="28" fill="' + pal.ropa + '"/>' +
+    '<rect x="28" y="76" width="40" height="14" fill="' + pal.ropa2 + '"/>' +
+    '<rect x="24" y="62" width="7" height="20" fill="' + pal.ropa2 + '" class="brazo-izq"/>' +
+    '<rect x="65" y="62" width="7" height="20" fill="' + pal.ropa2 + '" class="brazo-der"/>' +
+    '<rect x="24" y="80" width="7" height="7" fill="#e8b98f" class="brazo-izq"/>' +
+    '<rect x="65" y="80" width="7" height="7" fill="#e8b98f" class="brazo-der"/>' +
+    melena +
+    '<rect x="44" y="56" width="8" height="7" fill="#d9a97f"/>' +
+    '<rect x="32" y="26" width="32" height="31" fill="#e8b98f"/>' +
+    '<rect x="32" y="26" width="32" height="6" fill="#f2c9a4"/>' +
+    flequillo +
+    '<rect x="30" y="22" width="36" height="8" fill="' + pal.pelo + '"/>' +
+    '<rect x="37" y="38" width="6" height="7" fill="#2b1d18" class="ojo"/>' +
+    '<rect x="53" y="38" width="6" height="7" fill="#2b1d18" class="ojo"/>' +
+    '<rect x="38" y="38" width="2" height="2" fill="#ffffff"/>' +
+    '<rect x="54" y="38" width="2" height="2" fill="#ffffff"/>' +
+    '<rect x="35" y="47" width="9" height="4" fill="#ff7fa8" class="rubor" opacity="' + rubor.toFixed(2) + '"/>' +
+    '<rect x="52" y="47" width="9" height="4" fill="#ff7fa8" class="rubor" opacity="' + rubor.toFixed(2) + '"/>' +
+    '<rect x="44" y="51" width="8" height="2" fill="#a33b4d"/>' +
+    '<rect x="28" y="30" width="4" height="4" fill="' + pal.lazo + '"/>' +
+    '</svg>';
+}
+
+function corazonesFlotantes(cantidad) {
+  const caja = $('#retrato');
+  if (!caja) return;
+  const total = Math.max(1, Math.min(8, cantidad || 3));
+  for (let i = 0; i < total; i++) {
+    const corazon = document.createElement('span');
+    corazon.className = 'corazon-flotante';
+    corazon.textContent = '\u2665';
+    corazon.style.left = 12 + Math.random() * 68 + '%';
+    corazon.style.animationDelay = i * 260 + 'ms';
+    caja.appendChild(corazon);
+    window.setTimeout(() => corazon.remove(), 6500 + i * 260);
+  }
+}
+
+function animarAccion(id, duracion) {
+  const retrato = $('#retrato');
+  if (!retrato) return;
+  const clase = 'act-' + id;
+  retrato.classList.remove('act-picar', 'act-minar', 'act-proteger', 'act-flor', 'act-caricia', 'act-intimidad');
+  void retrato.offsetWidth;
+  retrato.classList.add(clase);
+  corazonesFlotantes(id === 'intimidad' ? 8 : 3);
+  window.setTimeout(() => retrato.classList.remove(clase), duracion);
+}
+
+let bannerTimer = null;
+
+function mostrarBanner(texto, duracion) {
+  const banner = $('#banner');
+  const etiqueta = $('#bannerTexto');
+  const relleno = $('#bannerRelleno');
+  if (!banner || !etiqueta || !relleno) return;
+
+  etiqueta.textContent = texto;
+  banner.hidden = false;
+  banner.classList.add('activo');
+
+  relleno.style.transition = 'none';
+  relleno.style.width = '100%';
+  void relleno.offsetWidth;
+  relleno.style.transition = 'width ' + duracion + 'ms linear';
+  relleno.style.width = '0%';
+
+  window.clearTimeout(bannerTimer);
+  bannerTimer = window.setTimeout(() => {
+    banner.classList.remove('activo');
+    banner.hidden = true;
+  }, duracion);
+}
+
 function renderFicha() {
   const umbral = umbralActual();
   $('#estadoAfectivo').textContent = umbral.nombre;
@@ -138,6 +255,8 @@ function renderFicha() {
 
   $('#btnHora').textContent = estado.noche ? '🌙 Es de noche' : '☀️ Es de día';
   $('#chkAdulto').checked = estado.adulto;
+  actualizarBotonNoche();
+  renderRetrato();
 
   const contenedorGeneros = $('#generos');
   if (contenedorGeneros) {
@@ -225,8 +344,17 @@ function renderAcciones() {
   });
 }
 
-function motivoBloqueo(accion, ahora) {
-  if (estado.afinidad < (accion.requiere || 0)) {
+function actualizarBotonNoche() {
+  const boton = $('#btnNoche');
+  if (!boton || !datos) return;
+  const accion = datos.acciones.find((a) => a.id === 'intimidad');
+  if (!accion) return;
+  const motivo = motivoBloqueo(accion, Date.now());
+  boton.disabled = Boolean(motivo);
+  boton.textContent = motivo ? '💗 Pasar la noche con Ely · ' + motivo : '💗 Pasar la noche con Ely';
+}
+
+function motivoBloqueo(accion, ahora) {  if (estado.afinidad < (accion.requiere || 0)) {
     return 'Necesita afinidad ' + accion.requiere + ' (tienes ' + estado.afinidad + ')';
   }
   if (accion.requiereNoche && !estado.noche) {
@@ -295,33 +423,46 @@ function ejecutarAccion(id) {
 
   const real = sumarAfinidad(accion.afinidad || 0);
   estado.recargas[id] = Date.now() + (accion.recarga || 0) * 1000;
-  registrar(accion.nombre + ': ' + (SABOR_ACCION[id] || accion.descripcion), 'ely');
+
+  const duracion = Number(accion.duracion || 6000);
+  const relato = SABOR_ACCION[id] || accion.descripcion;
+  registrar(accion.nombre + ': ' + relato, 'ely');
   if (real) registrar('Afinidad ' + (real > 0 ? '+' : '') + real + ' ♥', 'sistema');
 
+  mostrarBanner(relato + (real ? '  (+' + real + ' ♥)' : ''), duracion);
+  animarAccion(id, duracion);
+
   if (accion.fundido) {
-    fundir();
+    fundir(duracion);
   }
 
   guardar();
   render();
 }
 
-function fundir() {
+function fundir(duracion) {
   const capa = $('#fundido');
   const texto = $('#fundidoTexto');
+  const total = Math.max(6000, Number(duracion || 9000));
   texto.textContent =
-    'La pantalla se funde a negro. Ely te abraza y el mundo se queda en silencio un rato. ' +
-    'No se muestra nada explícito: el mod solo deja corazones flotando y una frase cariñosa al despertar.';
+    'Ely te abraza y el bosque se apaga. La escena se intuye en la oscuridad: respiraciones, ' +
+    'corazones flotando y su voz diciendo tu nombre. El mod no muestra imágenes explícitas.';
 
   capa.classList.add('activo');
   window.setTimeout(() => {
     capa.classList.remove('activo');
     registrar('Amanece. Ely te mira como si fueras lo único importante del mundo.', 'sistema');
+    mostrarBanner('Amanece a su lado. Ely te sonríe sin soltarte la mano.', 7000);
     render();
-  }, 4200);
+  }, total);
 }
 
 function conectarEventos() {
+  const btnNoche = $('#btnNoche');
+  if (btnNoche) {
+    btnNoche.addEventListener('click', () => ejecutarAccion('intimidad'));
+  }
+
   $('#btnHora').addEventListener('click', () => {
     estado.noche = !estado.noche;
     registrar(estado.noche ? 'Cae la noche sobre el bosque.' : 'Amanece sobre el bosque.', 'sistema');
@@ -362,7 +503,10 @@ async function iniciar() {
   }
 
   render();
-  window.setInterval(renderAcciones, 1000);
+  window.setInterval(() => {
+    renderAcciones();
+    actualizarBotonNoche();
+  }, 1000);
 }
 
 iniciar().catch((err) => {
