@@ -1,0 +1,99 @@
+{
+  "item.elylang.amuleto_corazon": "Amuleto del Corazón",
+
+  "elylang.bienvenida": "Has recibido el Amuleto del Corazón. Ely te observa desde los árboles.",
+  "elylang.genero.pedir": "Ely aún no tiene forma definida. ¿Qué género quieres para tu compañera?",
+  "elylang.genero.opcion.femenino": "Chica",
+  "elylang.genero.opcion.masculino": "Chico",
+  "elylang.genero.opcion.neutro": "No binario",
+  "elylang.genero.elegido": "Ely ahora se presenta como %s.",
+  "elylang.genero.invalido": "Género no válido. Usa femenino, masculino o neutro.",
+  "elylang.genero.actual": "Género actual de Ely: %s",
+
+  "elylang.presentacion.femenino": "Soy Ely, guardiana de este bosque. Llevo aquí desde antes de que llegaras.",
+  "elylang.presentacion.masculino": "Soy Ely, guardián de este bosque. Llevo aquí desde antes de que llegaras.",
+  "elylang.presentacion.neutro": "Soy Ely, espíritu de este bosque. Llevo aquí desde antes de que llegaras.",
+
+  "elylang.estado.0": "Desconfianza",
+  "elylang.estado.1": "Curiosidad",
+  "elylang.estado.2": "Encariñado",
+  "elylang.estado.3": "Enamorado",
+  "elylang.estado.4": "Perdidamente enamorado",
+
+  "elylang.cabecera": "✦ Ely · %s (%s/100)",
+  "elylang.hover.elegir": "Elige esta respuesta",
+  "elylang.dialogo.afinidad": "Afinidad %s%d → ahora %d/100",
+  "elylang.cierre": "Cierras el diálogo. Ely sigue ahí, por si vuelves.",
+  "elylang.menu.titulo": "▬ Ely ▬",
+  "elylang.menu.ayuda": "Acciones: /ely picar · minar · proteger · flor · caricia · intimidad",
+
+  "elylang.nodo.raiz": "Me alegra que estés aquí. ¿De qué te apetece hablar?",
+  "elylang.nodo.saludo": "Cada vez que vuelves el mundo se siente más cálido. He estado cuidando tus cosas mientras dormías.",
+  "elylang.nodo.cuidado": "Nadie me lo había preguntado antes… tú. Tú me cuidas. Quédate un momento más, ¿sí?",
+  "elylang.nodo.bosque": "Los árboles susurran tu nombre cuando pasas. Les digo que se callen, pero no me hacen caso.",
+  "elylang.nodo.arbol": "Ya lo hice. Creció justo donde enterré la primera flor que me diste. Algún día te enseño el camino.",
+  "elylang.nodo.pasado": "He cuidado este bosque desde mucho antes de que llegaras. Estaba sin nadie… y entonces encendiste una antorcha a medianoche y me hablaste como si fuera alguien.",
+  "elylang.nodo.nosotros": "Somos… lo que tú quieras llamarlo. Yo lo llamo «mi persona favorita de todo el mundo».",
+  "elylang.nodo.futuro": "Quiero ver amaneceres contigo. Quiero una casa, un huerto y dos camas. Bueno… o una.",
+  "elylang.nodo.adios": "No tardes, ¿vale? Te estaré esperando junto a la hoguera.",
+  "elylang.nodo.fin": "Ely sonríe y aparta la mirada para que no le veas sonrojarse.",
+
+  "elylang.opc.raiz.1": "¿Quién eres?",
+  "elylang.opc.raiz.2": "¿Cómo estás hoy?",
+  "elylang.opc.raiz.3": "Háblame del bosque",
+  "elylang.opc.raiz.4": "¿Qué te trajo hasta mí?",
+  "elylang.opc.raiz.5": "¿Qué somos tú y yo?",
+  "elylang.opc.raiz.6": "¿Qué quieres para el futuro?",
+  "elylang.opc.raiz.7": "Solo quería verte",
+
+  "elylang.opc.quien.1": "Encantado de conocerte",
+  "elylang.opc.quien.2": "Ya nos conocíamos",
+
+  "elylang.opc.saludo.1": "Gracias por cuidarme",
+  "elylang.opc.saludo.2": "¿Y quién te cuida a ti?",
+  "elylang.opc.saludo.3": "Eres muy dulce",
+
+  "elylang.opc.cuidado.1": "Me quedo",
+  "elylang.opc.cuidado.2": "Siempre",
+
+  "elylang.opc.bosque.1": "¿Les hablas de mí?",
+  "elylang.opc.bosque.2": "Planta uno para mí",
+  "elylang.opc.bosque.3": "Me gusta que hablen de mí",
+
+  "elylang.opc.arbol.1": "Lo veré contigo",
+
+  "elylang.opc.pasado.1": "Lo eres",
+  "elylang.opc.pasado.2": "Perdón si te asusté",
+  "elylang.opc.pasado.3": "No recuerdo esa noche",
+
+  "elylang.opc.nosotros.1": "Eres mi persona favorita",
+  "elylang.opc.nosotros.2": "Vamos despacio",
+  "elylang.opc.nosotros.3": "Solo somos amigos",
+
+  "elylang.opc.futuro.1": "Una cama está bien",
+  "elylang.opc.futuro.2": "Construyamos la casa",
+  "elylang.opc.futuro.3": "Aún es pronto",
+
+  "elylang.opc.adios.1": "Volveré pronto",
+  "elylang.opc.fin.1": "Cerrar el diálogo",
+
+  "elylang.accion.picar.ok": "Ely tala %d troncos y la madera cae a tus pies.",
+  "elylang.accion.picar.vacio": "No hay troncos cerca. Acércate a un bosque.",
+  "elylang.accion.minar.ok": "Ely abre un túnel y te pasa %d menas.",
+  "elylang.accion.minar.vacio": "No encuentra menas cerca. Baja un poco más.",
+  "elylang.accion.proteger.ok": "Ely se planta delante de ti. El aire huele a ozono y a flores.",
+  "elylang.accion.flor.ok": "Le entregas una flor. Ely se la guarda en el pelo sin decir nada.",
+  "elylang.accion.caricia.ok": "Le apartas un mechón de la cara. Ely se queda sin palabras.",
+  "elylang.accion.intimidad.ok": "Ely te abraza y el mundo se queda en silencio.",
+  "elylang.accion.intimidad.fundido": "La pantalla se funde a negro…",
+  "elylang.accion.intimidad.despertar": "Amanece. Ely te mira como si fueras lo único importante del mundo.",
+
+  "elylang.error.afinidad": "Ely todavía no confía lo suficiente en ti (necesita afinidad 80).",
+  "elylang.error.noche": "Ely solo quiere eso de noche. Espera a que caiga el sol.",
+  "elylang.error.adulto": "Antes confirma con /ely adulto que eres mayor de 18 años.",
+  "elylang.error.espera": "Ely necesita descansar un rato.",
+
+  "elylang.estado.linea": "Afinidad: %s (%d/100) · Género: %s",
+  "elylang.amuleto.devuelto": "Ely te devuelve el Amuleto del Corazón.",
+  "elylang.adulto.confirmado": "Confirmado: mayor de 18 años. Ely te mira con más confianza."
+}
