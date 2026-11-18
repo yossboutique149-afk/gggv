@@ -1,0 +1,147 @@
+{
+  "personaje": {
+    "nombre": "Ely",
+    "titulo": "Guardiana del bosque, enamorada del jugador",
+    "descripcion": "Un espíritu del bosque que se enamoró del jugador la noche en que le hablaron por primera vez."
+  },
+  "afinidadInicial": 20,
+  "nodoInicial": "raiz",
+  "umbrales": [
+    { "min": 0, "nombre": "Desconfiada", "color": "#9aa0a6" },
+    { "min": 25, "nombre": "Curiosa", "color": "#7fd1ff" },
+    { "min": 50, "nombre": "Encariñada", "color": "#ff9ecb" },
+    { "min": 75, "nombre": "Enamorada", "color": "#ff5f9e" },
+    { "min": 95, "nombre": "Perdidamente enamorada", "color": "#ff2d78" }
+  ],
+  "nodos": {
+    "raiz": {
+      "texto": "Me alegra que estés aquí. ¿De qué te apetece hablar?",
+      "opciones": [
+        { "texto": "¿Cómo estás hoy?", "afinidad": 2, "ir": "saludo" },
+        { "texto": "Háblame del bosque", "afinidad": 2, "ir": "bosque" },
+        { "texto": "¿Qué te trajo hasta mí?", "afinidad": 3, "ir": "pasado" },
+        { "texto": "¿Qué somos tú y yo?", "afinidad": 3, "ir": "nosotros" },
+        { "texto": "¿Qué quieres para el futuro?", "afinidad": 3, "ir": "futuro" },
+        { "texto": "Solo quería verte", "afinidad": 2, "ir": "adios" }
+      ]
+    },
+    "saludo": {
+      "texto": "Cada vez que vuelves el mundo se siente más cálido. He estado cuidando tus cosas mientras dormías.",
+      "opciones": [
+        { "texto": "Gracias por cuidarme", "afinidad": 4, "ir": "adios" },
+        { "texto": "¿Y quién te cuida a ti?", "afinidad": 5, "ir": "cuidado" },
+        { "texto": "Eres muy dulce", "afinidad": 3, "ir": "adios" }
+      ]
+    },
+    "cuidado": {
+      "texto": "Nadie me lo había preguntado antes… tú. Tú me cuidas. Quédate un momento más, ¿sí?",
+      "opciones": [
+        { "texto": "Me quedo", "afinidad": 6, "ir": "fin" },
+        { "texto": "Siempre", "afinidad": 8, "ir": "fin" }
+      ]
+    },
+    "bosque": {
+      "texto": "Los árboles susurran tu nombre cuando pasas. Les digo que se callen, pero no me hacen caso.",
+      "opciones": [
+        { "texto": "¿Les hablas de mí?", "afinidad": 4, "ir": "nosotros" },
+        { "texto": "Planta uno para mí", "afinidad": 3, "ir": "arbol" },
+        { "texto": "Me gusta que hablen de mí", "afinidad": 2, "ir": "fin" }
+      ]
+    },
+    "arbol": {
+      "texto": "Ya lo hice. Creció justo donde enterré la primera flor que me diste. Algún día te enseño el camino.",
+      "opciones": [{ "texto": "Lo veré contigo", "afinidad": 5, "ir": "fin" }]
+    },
+    "pasado": {
+      "texto": "Fui guardiana de este bosque mucho antes de que llegaras. Estaba sola… y entonces encendiste una antorcha a medianoche y me hablaste como si fuera alguien.",
+      "opciones": [
+        { "texto": "Lo eres", "afinidad": 6, "ir": "fin" },
+        { "texto": "Perdón si te asusté", "afinidad": 3, "ir": "fin" },
+        { "texto": "No recuerdo esa noche", "afinidad": 1, "ir": "fin" }
+      ]
+    },
+    "nosotros": {
+      "texto": "Somos… lo que tú quieras llamarlo. Yo lo llamo «mi persona favorita de todo el mundo».",
+      "opciones": [
+        { "texto": "Eres mi persona favorita", "afinidad": 7, "ir": "fin" },
+        { "texto": "Vamos despacio", "afinidad": 2, "ir": "fin" },
+        { "texto": "Solo somos amigos", "afinidad": -5, "ir": "fin" }
+      ]
+    },
+    "futuro": {
+      "texto": "Quiero ver amaneceres contigo. Quiero una casa, un huerto y dos camas. Bueno… o una.",
+      "opciones": [
+        { "texto": "Una cama está bien", "afinidad": 8, "ir": "fin" },
+        { "texto": "Construyamos la casa", "afinidad": 5, "ir": "fin" },
+        { "texto": "Aún es pronto", "afinidad": 1, "ir": "fin" }
+      ]
+    },
+    "adios": {
+      "texto": "No tardes, ¿vale? Te estaré esperando junto a la hoguera.",
+      "opciones": [{ "texto": "Volveré pronto", "afinidad": 3, "ir": "fin" }]
+    },
+    "fin": {
+      "texto": "Ely sonríe y aparta la mirada para que no la veas sonrojarse.",
+      "opciones": [{ "texto": "Cerrar el diálogo", "afinidad": 0, "ir": "" }]
+    }
+  },
+  "acciones": [
+    {
+      "id": "picar",
+      "nombre": "Picar leña",
+      "icono": "🪓",
+      "descripcion": "Ely tala los troncos que te rodean y te los deja en el inventario.",
+      "afinidad": 4,
+      "requiere": 0,
+      "recarga": 8
+    },
+    {
+      "id": "minar",
+      "nombre": "Minar",
+      "icono": "⛏️",
+      "descripcion": "Ely excava túneles y te trae las menas que encuentra cerca.",
+      "afinidad": 4,
+      "requiere": 20,
+      "recarga": 12
+    },
+    {
+      "id": "proteger",
+      "nombre": "Proteger",
+      "icono": "🛡️",
+      "descripcion": "Ely se interpone entre tú y los monstruos: resistencia, absorción y regeneración.",
+      "afinidad": 5,
+      "requiere": 30,
+      "recarga": 15
+    },
+    {
+      "id": "flor",
+      "nombre": "Regalar una flor",
+      "icono": "🌷",
+      "descripcion": "Le entregas una flor del bosque. Se le queda mirando más de la cuenta.",
+      "afinidad": 7,
+      "requiere": 0,
+      "recarga": 10
+    },
+    {
+      "id": "caricia",
+      "nombre": "Acariciar su pelo",
+      "icono": "🫶",
+      "descripcion": "Le apartas un mechón de la cara. Ely se queda sin palabras por un momento.",
+      "afinidad": 6,
+      "requiere": 50,
+      "recarga": 20
+    },
+    {
+      "id": "intimidad",
+      "nombre": "Noche de pasión",
+      "icono": "💗",
+      "descripcion": "Se requiere afinidad 80, que sea de noche y confirmar que eres mayor de edad. La pantalla se funde a negro: no se muestra nada explícito.",
+      "afinidad": 10,
+      "requiere": 80,
+      "recarga": 60,
+      "requiereNoche": true,
+      "requiereAdulto": true,
+      "fundido": true
+    }
+  ]
+}

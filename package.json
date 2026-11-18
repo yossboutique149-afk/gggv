@@ -1,0 +1,16 @@
+{
+  "name": "elylang",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo web jugable del mod de Minecraft 'Ely, companera del alma' (dialogos, afinidad y acciones)",
+  "main": "server.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
