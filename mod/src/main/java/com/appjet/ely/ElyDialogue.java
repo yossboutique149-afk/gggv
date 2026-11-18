@@ -96,7 +96,31 @@ public final class ElyDialogue {
             ElyJoin.pedirGenero(jugador);
         }
         mostrar(jugador, "raiz");
+        mostrarAcciones(jugador);
         jugador.sendMessage(Text.translatable("elylang.menu.ayuda").formatted(Formatting.DARK_GRAY), false);
+    }
+
+    /**
+     * Acciones del amuleto como líneas clicables: el jugador solo hace clic,
+     * no necesita escribir ningún comando para que Ely actúe.
+     */
+    private static void mostrarAcciones(ServerPlayerEntity jugador) {
+        jugador.sendMessage(Text.translatable("elylang.menu.acciones").formatted(Formatting.DARK_GRAY), false);
+        accion(jugador, "picar", "elylang.menu.accion.picar");
+        accion(jugador, "minar", "elylang.menu.accion.minar");
+        accion(jugador, "proteger", "elylang.menu.accion.proteger");
+        accion(jugador, "flor", "elylang.menu.accion.flor");
+        accion(jugador, "acariciar", "elylang.menu.accion.acariciar");
+        accion(jugador, "intimidad", "elylang.menu.accion.intimidad");
+    }
+
+    private static void accion(ServerPlayerEntity jugador, String subcomando, String clave) {
+        MutableText linea = Text.literal("  ❤ ").formatted(Formatting.DARK_GRAY)
+            .append(Text.translatable(clave).formatted(Formatting.LIGHT_PURPLE));
+        linea.styled(estilo -> estilo
+            .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ely " + subcomando))
+            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("elylang.hover.accion"))));
+        jugador.sendMessage(linea, false);
     }
 
     public static void mostrar(ServerPlayerEntity jugador, String id) {
