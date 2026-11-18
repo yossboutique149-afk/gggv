@@ -55,7 +55,7 @@ def libreriasParcheadas = [
 ]
 
 ['compileClasspath', 'runtimeClasspath'].each { nombre ->
-    configurations.named(nombre).resolutionStrategy {
+    configurations.getByName(nombre).resolutionStrategy {
         libreriasParcheadas.each { coordenada -> force coordenada }
     }
 }
