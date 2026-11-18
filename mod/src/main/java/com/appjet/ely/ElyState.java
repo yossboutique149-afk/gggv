@@ -16,6 +16,10 @@ import java.util.UUID;
 public class ElyState extends PersistentState {
     private static final String CLAVE = "elylang_companera";
 
+    /** Tipo de estado persistente que registra el gestor de estado del mundo. */
+    public static final PersistentState.Type<ElyState> TIPO =
+        new PersistentState.Type<>(ElyState::new, ElyState::fromNbt, null);
+
     public static final int AFINIDAD_INICIAL = 20;
     public static final int AFINIDAD_MAXIMA = 100;
     public static final long RECARGA_INTIMIDAD = 24000L;
@@ -29,7 +33,7 @@ public class ElyState extends PersistentState {
     public static ElyState get(MinecraftServer server) {
         return server.getOverworld()
             .getPersistentStateManager()
-            .getOrCreate(ElyState::fromNbt, ElyState::new, CLAVE);
+            .getOrCreate(TIPO, CLAVE);
     }
 
     // --- afinidad -----------------------------------------------------------

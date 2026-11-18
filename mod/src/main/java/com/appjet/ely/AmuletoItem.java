@@ -4,8 +4,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 /**
@@ -19,12 +19,12 @@ public class AmuletoItem extends Item {
     }
 
     @Override
-    public ActionResult use(World world, PlayerEntity user, Hand hand) {
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        ItemStack enMano = user.getStackInHand(hand);
         if (!world.isClient() && user instanceof ServerPlayerEntity player) {
             ElyDialogue.abrirMenu(player);
-            return ActionResult.SUCCESS;
         }
-        return ActionResult.SUCCESS;
+        return TypedActionResult.success(enMano);
     }
 
     @Override
