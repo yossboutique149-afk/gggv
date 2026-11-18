@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ely · Compañera del Alma — demo del mod</title>
+  <meta name="description" content="Demo web del mod de Minecraft elylang: una compañera enamorada del jugador con diálogo, afinidad y acciones.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="marco">
+    <header class="cabecera">
+      <h1>Ely <span class="sub">· compañera del alma</span></h1>
+      <p class="lema">Demo web del mod de Minecraft <code>elylang</code> · Java (Fabric) y Bedrock · tú eliges su género · romance no explícito</p>
+    </header>
+
+    <main class="rejilla">
+      <section class="panel ficha" aria-label="Ficha de Ely">
+        <div class="retrato" id="retrato" aria-hidden="true">
+          <span class="corazon">&#9829;</span>
+        </div>
+        <h2 id="nombre">Ely</h2>
+        <p class="estado-afectivo" id="estadoAfectivo">Curiosidad</p>
+
+        <p class="etiqueta-mini">Género de Ely</p>
+        <div class="generos" id="generos" role="group" aria-label="Elige el género de Ely"></div>
+
+        <div class="barra" id="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20" aria-label="Afinidad con Ely">
+          <div class="barra-relleno" id="barraRelleno"></div>
+        </div>
+        <p class="afinidad" id="etiquetaAfinidad">Afinidad 20/100</p>
+        <div class="corazones" id="corazones" aria-hidden="true"></div>
+
+        <div class="fila">
+          <button id="btnHora" class="boton secundario" type="button">☀️ Es de día</button>
+          <button id="btnReiniciar" class="boton secundario" type="button">↺ Reiniciar</button>
+        </div>
+
+        <label class="adulto" for="chkAdulto">
+          <input type="checkbox" id="chkAdulto">
+          <span>Confirmo que soy mayor de 18 años y que esto es ficción.</span>
+        </label>
+      </section>
+
+      <section class="panel dialogo" aria-label="Diálogo con Ely">
+        <p class="etiqueta">Diálogo</p>
+        <blockquote id="linea" class="linea">…</blockquote>
+        <div id="opciones" class="opciones"></div>
+      </section>
+    </main>
+
+    <section class="panel acciones-panel" aria-label="Acciones de Ely">
+      <p class="etiqueta">Acciones</p>
+      <div id="acciones" class="acciones"></div>
+    </section>
+
+    <section class="panel registro-panel" aria-label="Registro">
+      <p class="etiqueta">Registro</p>
+      <ul id="registro" class="registro"></ul>
+    </section>
+  </div>
+
+  <div id="fundido" class="fundido" aria-hidden="true">
+    <p id="fundidoTexto"></p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
