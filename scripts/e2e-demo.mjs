@@ -20,7 +20,8 @@ const CANDIDATOS_CHROMIUM = [
 ].filter(Boolean);
 
 const PUERTO = Number(process.env.E2E_PORT || 3311);
-const BASE = `http://127.0.0.1:${PUERTO}`;
+const BASE = process.env.E2E_BASE_URL || `http://127.0.0.1:${PUERTO}`;
+const BASE_REMOTA = Boolean(process.env.E2E_BASE_URL);
 const fallos = [];
 
 function comprobar(condicion, mensaje) {
@@ -45,11 +46,13 @@ function cargarPlaywright() {
 
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const servidor = spawn('node', ['server.js'], {
-  cwd: process.cwd(),
-  env: { ...process.env, PORT: String(PUERTO) },
-  stdio: 'ignore',
-});
+const servidor = BASE_REMOTA
+  ? null
+  : spawn('node', ['server.js'], {
+      cwd: process.cwd(),
+      env: { ...process.env, PORT: String(PUERTO) },
+      stdio: 'ignore',
+    });
 
 let navegador;
 try {
@@ -124,7 +127,7 @@ try {
   console.error(error);
 } finally {
   if (navegador) await navegador.close();
-  servidor.kill();
+  if (servidor) servidor.kill();
 }
 
 if (fallos.length) {
