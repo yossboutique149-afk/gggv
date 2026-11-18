@@ -81,6 +81,11 @@ public final class ElyDialogue {
     private ElyDialogue() {
     }
 
+    /** Identificadores de nodo, para sugerencias de comandos. */
+    public static java.util.Set<String> ids() {
+        return NODOS.keySet();
+    }
+
     private static void nodo(String id, String clave, boolean usaGenero, Opcion... opciones) {
         NODOS.put(id, new Nodo(clave, usaGenero, List.of(opciones)));
     }
