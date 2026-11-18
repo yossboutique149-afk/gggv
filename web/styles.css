@@ -148,6 +148,33 @@ body {
   color: var(--rosa);
 }
 
+.etiqueta-mini {
+  margin: 0 0 6px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.generos {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.generos .boton {
+  font-size: 12px;
+  padding: 5px 9px;
+}
+
+.generos .boton.activo {
+  background: #3b2130;
+  border-color: var(--rosa);
+  color: #ffd7e7;
+}
+
 .barra {
   height: 14px;
   background: #0f0d0c;

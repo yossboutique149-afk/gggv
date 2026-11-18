@@ -1,28 +1,55 @@
 {
   "personaje": {
     "nombre": "Ely",
-    "titulo": "Guardiana del bosque, enamorada del jugador",
+    "titulo": "Espíritu guardián del bosque, enamorado del jugador",
     "descripcion": "Un espíritu del bosque que se enamoró del jugador la noche en que le hablaron por primera vez."
   },
+  "generoPorDefecto": "femenino",
+  "generos": [
+    {
+      "id": "femenino",
+      "etiqueta": "Chica",
+      "presentacion": "Soy Ely, guardiana de este bosque. Llevo aquí desde antes de que llegaras."
+    },
+    {
+      "id": "masculino",
+      "etiqueta": "Chico",
+      "presentacion": "Soy Ely, guardián de este bosque. Llevo aquí desde antes de que llegaras."
+    },
+    {
+      "id": "neutro",
+      "etiqueta": "No binario",
+      "presentacion": "Soy Ely, espíritu de este bosque. Llevo aquí desde antes de que llegaras."
+    }
+  ],
   "afinidadInicial": 20,
   "nodoInicial": "raiz",
   "umbrales": [
-    { "min": 0, "nombre": "Desconfiada", "color": "#9aa0a6" },
-    { "min": 25, "nombre": "Curiosa", "color": "#7fd1ff" },
-    { "min": 50, "nombre": "Encariñada", "color": "#ff9ecb" },
-    { "min": 75, "nombre": "Enamorada", "color": "#ff5f9e" },
-    { "min": 95, "nombre": "Perdidamente enamorada", "color": "#ff2d78" }
+    { "min": 0, "nombre": "Desconfianza", "color": "#9aa0a6" },
+    { "min": 25, "nombre": "Curiosidad", "color": "#7fd1ff" },
+    { "min": 50, "nombre": "Encariñado", "color": "#ff9ecb" },
+    { "min": 75, "nombre": "Enamorado", "color": "#ff5f9e" },
+    { "min": 95, "nombre": "Perdidamente enamorado", "color": "#ff2d78" }
   ],
   "nodos": {
     "raiz": {
       "texto": "Me alegra que estés aquí. ¿De qué te apetece hablar?",
       "opciones": [
+        { "texto": "¿Quién eres?", "afinidad": 2, "ir": "quien" },
         { "texto": "¿Cómo estás hoy?", "afinidad": 2, "ir": "saludo" },
         { "texto": "Háblame del bosque", "afinidad": 2, "ir": "bosque" },
         { "texto": "¿Qué te trajo hasta mí?", "afinidad": 3, "ir": "pasado" },
         { "texto": "¿Qué somos tú y yo?", "afinidad": 3, "ir": "nosotros" },
         { "texto": "¿Qué quieres para el futuro?", "afinidad": 3, "ir": "futuro" },
         { "texto": "Solo quería verte", "afinidad": 2, "ir": "adios" }
+      ]
+    },
+    "quien": {
+      "presentacion": true,
+      "texto": "Soy Ely, espíritu de este bosque.",
+      "opciones": [
+        { "texto": "Encantado de conocerte", "afinidad": 4, "ir": "saludo" },
+        { "texto": "Ya nos conocíamos", "afinidad": 3, "ir": "pasado" }
       ]
     },
     "saludo": {
@@ -53,7 +80,7 @@
       "opciones": [{ "texto": "Lo veré contigo", "afinidad": 5, "ir": "fin" }]
     },
     "pasado": {
-      "texto": "Fui guardiana de este bosque mucho antes de que llegaras. Estaba sola… y entonces encendiste una antorcha a medianoche y me hablaste como si fuera alguien.",
+      "texto": "He cuidado este bosque desde mucho antes de que llegaras. Estaba sin nadie… y entonces encendiste una antorcha a medianoche y me hablaste como si fuera alguien.",
       "opciones": [
         { "texto": "Lo eres", "afinidad": 6, "ir": "fin" },
         { "texto": "Perdón si te asusté", "afinidad": 3, "ir": "fin" },
@@ -81,7 +108,7 @@
       "opciones": [{ "texto": "Volveré pronto", "afinidad": 3, "ir": "fin" }]
     },
     "fin": {
-      "texto": "Ely sonríe y aparta la mirada para que no la veas sonrojarse.",
+      "texto": "Ely sonríe y aparta la mirada para que no le veas sonrojarse.",
       "opciones": [{ "texto": "Cerrar el diálogo", "afinidad": 0, "ir": "" }]
     }
   },
@@ -117,7 +144,7 @@
       "id": "flor",
       "nombre": "Regalar una flor",
       "icono": "🌷",
-      "descripcion": "Le entregas una flor del bosque. Se le queda mirando más de la cuenta.",
+      "descripcion": "Le entregas una flor del bosque. Se queda mirándola más de la cuenta.",
       "afinidad": 7,
       "requiere": 0,
       "recarga": 10
@@ -126,7 +153,7 @@
       "id": "caricia",
       "nombre": "Acariciar su pelo",
       "icono": "🫶",
-      "descripcion": "Le apartas un mechón de la cara. Ely se queda sin palabras por un momento.",
+      "descripcion": "Le apartas un mechón de la cara. Ely se queda sin palabras un momento.",
       "afinidad": 6,
       "requiere": 50,
       "recarga": 20
@@ -135,7 +162,7 @@
       "id": "intimidad",
       "nombre": "Noche de pasión",
       "icono": "💗",
-      "descripcion": "Se requiere afinidad 80, que sea de noche y confirmar que eres mayor de edad. La pantalla se funde a negro: no se muestra nada explícito.",
+      "descripcion": "Requiere afinidad 80, que sea de noche y confirmar que eres mayor de edad. La pantalla se funde a negro: no se muestra nada explícito.",
       "afinidad": 10,
       "requiere": 80,
       "recarga": 60,
