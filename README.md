@@ -29,7 +29,10 @@ incluye el selector de género, la barra de afinidad, las seis acciones y el fun
 
 ## 2. Mod para Java Edition (Fabric)
 
-Requisitos: **JDK 21** y **Gradle 8.7+**.
+Requisitos: **JDK 21** y **Gradle 8.8+** (probado con Gradle 8.10 y Loom 1.7.4).
+
+**Jar ya compilado:** el repositorio incluye `web/descargas/elylang-1.0.0.jar`, generado con este mismo
+código, y puedes descargarlo desde la demo desplegada.
 
 ```bash
 cd mod
@@ -105,20 +108,32 @@ adulto, y el personaje es un espíritu ficticio del juego.
 
 ## Seguridad de dependencias
 
-- **Demo web:** no tiene dependencias de terceros. `package-lock.json` solo declara el paquete raíz, así que el
-  escáner no encuentra paquetes externos que auditar (0 paquetes resueltos, 0 hallazgos).
-- **Mod Java:** las dependencias (Loom, Minecraft, Yarn, Fabric Loader y Fabric API) están declaradas en
-  `mod/build.gradle` y las resuelve Gradle durante la compilación, por eso el repositorio no incluye un lockfile
-  y el escáner automático **no puede analizarlas**. Para auditarlas en tu equipo:
+Resultado real del análisis de este repositorio (OSV, 108 paquetes Maven + 0 paquetes npm):
+
+- **Demo web:** sin dependencias de terceros. `package-lock.json` solo declara el paquete raíz.
+- **Mod Java:** `mod/gradle.lockfile` (generado con `gradle build --write-locks`, 109 entradas) permite auditar
+  el grafo real de Gradle. El escaneo encontró **11 avisos altos/críticos**, todos en librerías transitivas que
+  aporta Minecraft 1.21.1 y **no se empaquetan en el jar** (comprobado: el `.jar` no contiene netty, guava ni lz4):
+
+  | Paquete | Versión fijada por Minecraft | Avisos |
+  | --- | --- | --- |
+  | `io.netty:netty-handler` / `netty-codec` | 4.1.97.Final | 7 (1 crítico) |
+  | `com.google.guava:guava` | 32.1.2-jre | 1 |
+  | `org.lz4:lz4-java` | 1.8.0 | 3 (uno sin versión corregida) |
+
+  Esas versiones las impone el propio Minecraft y las carga el juego, no el mod: forzarlas en el classpath de
+  compilación no cambiaría el runtime del jugador y podría romper la compilación contra la API del juego. Si
+  necesitas mitigarlas, actualiza a una versión de Minecraft con esas librerías parcheadas.
+- **Addon Bedrock:** no usa paquetes npm; `@minecraft/server` y `@minecraft/server-ui` los aporta el juego.
+- Para reproducir el análisis en tu equipo:
 
   ```bash
-  cd mod && gradle build --write-locks      # genera mod/gradle.lockfile
+  cd mod && gradle build --write-locks     # mod/gradle.lockfile
   osv-scanner --lockfile mod/gradle.lockfile
   ```
 
-- **Addon Bedrock:** no usa paquetes npm; `@minecraft/server` y `@minecraft/server-ui` los aporta el propio juego.
-- Este entorno de trabajo no tiene Gradle instalado ni acceso a los repositorios de Fabric/Mojang, así que la
-  comprobación de dependencias del mod quedó **incompleta (cobertura parcial, no un escaneo limpio)**.
+  Esto cubre vulnerabilidades conocidas de las dependencias declaradas; no certifica el código fuente ni el
+  parcheado del sistema operativo.
 
 ## Compatibilidad
 
