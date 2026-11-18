@@ -61,6 +61,13 @@ def libreriasParcheadas = [
     }
 }
 
+// lz4-java (1.8.1 es la ultima version publicada) tiene advisories sin parche.
+// El mod no usa esa libreria y no la empaqueta: en el juego la aporta Minecraft.
+// Se excluye del classpath del mod para no resolverla aqui.
+configurations.compileClasspath {
+    exclude group: 'org.lz4', module: 'lz4-java'
+}
+
 tasks.withType(JavaCompile).configureEach {
     it.options.release = 21
 }
