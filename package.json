@@ -6,6 +6,8 @@
   "main": "server.js",
   "scripts": {
     "build": "node scripts/build.js",
+    "texturas": "node scripts/gen-textures.js",
+    "pack:bedrock": "python3 scripts/empaquetar_bedrock.py",
     "start": "node server.js",
     "dev": "node server.js"
   },
