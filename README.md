@@ -103,6 +103,23 @@ El romance está escrito de forma **no explícita**: la escena se resuelve con u
 elipsis; nunca se describen actos sexuales. La opción está bloqueada hasta que el jugador confirma que es
 adulto, y el personaje es un espíritu ficticio del juego.
 
+## Seguridad de dependencias
+
+- **Demo web:** no tiene dependencias de terceros. `package-lock.json` solo declara el paquete raíz, así que el
+  escáner no encuentra paquetes externos que auditar (0 paquetes resueltos, 0 hallazgos).
+- **Mod Java:** las dependencias (Loom, Minecraft, Yarn, Fabric Loader y Fabric API) están declaradas en
+  `mod/build.gradle` y las resuelve Gradle durante la compilación, por eso el repositorio no incluye un lockfile
+  y el escáner automático **no puede analizarlas**. Para auditarlas en tu equipo:
+
+  ```bash
+  cd mod && gradle build --write-locks      # genera mod/gradle.lockfile
+  osv-scanner --lockfile mod/gradle.lockfile
+  ```
+
+- **Addon Bedrock:** no usa paquetes npm; `@minecraft/server` y `@minecraft/server-ui` los aporta el propio juego.
+- Este entorno de trabajo no tiene Gradle instalado ni acceso a los repositorios de Fabric/Mojang, así que la
+  comprobación de dependencias del mod quedó **incompleta (cobertura parcial, no un escaneo limpio)**.
+
 ## Compatibilidad
 
 - **Java:** Fabric 1.21.1 (Loom 1.7, Java 21). Con otra versión hay que ajustar `gradle.properties`.
