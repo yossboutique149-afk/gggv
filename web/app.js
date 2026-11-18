@@ -30,6 +30,7 @@ function estadoPorDefecto() {
     adulto: false,
     noche: false,
     nodo: null,
+    genero: null,
     recargas: {},
     registro: []
   };
@@ -55,6 +56,7 @@ function leerEstado() {
     adulto: Boolean(guardado.adulto),
     noche: Boolean(guardado.noche),
     nodo: typeof guardado.nodo === 'string' ? guardado.nodo : null,
+    genero: typeof guardado.genero === 'string' ? guardado.genero : null,
     recargas: guardado.recargas && typeof guardado.recargas === 'object' ? guardado.recargas : {},
     registro: Array.isArray(guardado.registro) ? guardado.registro.slice(0, MAX_REGISTRO) : []
   };
@@ -81,6 +83,20 @@ function registrar(texto, tipo) {
   estado.registro.unshift({ texto, tipo: tipo || 'sistema' });
   if (estado.registro.length > MAX_REGISTRO) estado.registro.length = MAX_REGISTRO;
   guardar();
+}
+
+function generoActual() {
+  const lista = datos.generos || [];
+  const elegido = lista.find((g) => g.id === estado.genero);
+  if (elegido) return elegido;
+  const porDefecto = lista.find((g) => g.id === datos.generoPorDefecto);
+  return porDefecto || { id: 'neutro', etiqueta: 'No binario', presentacion: 'Soy Ely, espíritu de este bosque.' };
+}
+
+function textoNodo(nodo) {
+  if (!nodo) return '';
+  if (nodo.presentacion) return generoActual().presentacion;
+  return nodo.texto;
 }
 
 function sumarAfinidad(delta) {
@@ -122,13 +138,34 @@ function renderFicha() {
 
   $('#btnHora').textContent = estado.noche ? '🌙 Es de noche' : '☀️ Es de día';
   $('#chkAdulto').checked = estado.adulto;
+
+  const contenedorGeneros = $('#generos');
+  if (contenedorGeneros) {
+    const actual = generoActual();
+    contenedorGeneros.innerHTML = '';
+    (datos.generos || []).forEach((genero) => {
+      const boton = document.createElement('button');
+      boton.type = 'button';
+      boton.className = 'boton genero' + (genero.id === actual.id ? ' activo' : '');
+      boton.dataset.genero = genero.id;
+      boton.textContent = genero.etiqueta;
+      boton.setAttribute('aria-pressed', genero.id === actual.id ? 'true' : 'false');
+      boton.addEventListener('click', () => {
+        estado.genero = genero.id;
+        registrar('Decides que Ely sea ' + genero.etiqueta.toLowerCase() + '. ' + genero.presentacion, 'sistema');
+        guardar();
+        render();
+      });
+      contenedorGeneros.appendChild(boton);
+    });
+  }
 }
 
 function renderDialogo() {
   const nodo = datos.nodos[estado.nodo] || datos.nodos[datos.nodoInicial];
   estado.nodo = estado.nodo in datos.nodos ? estado.nodo : datos.nodoInicial;
 
-  $('#linea').textContent = '«' + nodo.texto + '»';
+  $('#linea').textContent = '«' + textoNodo(nodo) + '»';
 
   const contenedor = $('#opciones');
   contenedor.innerHTML = '';
@@ -238,7 +275,7 @@ function elegir(indice) {
   } else {
     estado.nodo = opcion.ir;
     const siguiente = datos.nodos[opcion.ir];
-    if (siguiente) registrar('Ely: ' + siguiente.texto, 'ely');
+    if (siguiente) registrar('Ely: ' + textoNodo(siguiente), 'ely');
   }
 
   guardar();
@@ -313,11 +350,15 @@ async function iniciar() {
 
   estado = leerEstado();
   if (!estado.nodo || !datos.nodos[estado.nodo]) estado.nodo = datos.nodoInicial;
+  if (!estado.genero) estado.genero = datos.generoPorDefecto;
 
   conectarEventos();
 
   if (estado.registro.length === 0) {
-    registrar('Recibes el Amuleto del Corazón. Ely aparece entre los árboles y te mira fijamente.', 'sistema');
+    registrar(
+      'Recibes el Amuleto del Corazón. ' + generoActual().presentacion + ' Te mira fijamente.',
+      'sistema'
+    );
   }
 
   render();
