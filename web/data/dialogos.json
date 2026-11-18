@@ -120,7 +120,8 @@
       "descripcion": "Ely tala los troncos que te rodean y te los deja en el inventario.",
       "afinidad": 4,
       "requiere": 0,
-      "recarga": 8
+      "recarga": 8,
+      "duracion": 7000
     },
     {
       "id": "minar",
@@ -129,7 +130,8 @@
       "descripcion": "Ely excava túneles y te trae las menas que encuentra cerca.",
       "afinidad": 4,
       "requiere": 20,
-      "recarga": 12
+      "recarga": 12,
+      "duracion": 8000
     },
     {
       "id": "proteger",
@@ -138,7 +140,8 @@
       "descripcion": "Ely se interpone entre tú y los monstruos: resistencia, absorción y regeneración.",
       "afinidad": 5,
       "requiere": 30,
-      "recarga": 15
+      "recarga": 15,
+      "duracion": 8000
     },
     {
       "id": "flor",
@@ -147,7 +150,8 @@
       "descripcion": "Le entregas una flor del bosque. Se queda mirándola más de la cuenta.",
       "afinidad": 7,
       "requiere": 0,
-      "recarga": 10
+      "recarga": 10,
+      "duracion": 7000
     },
     {
       "id": "caricia",
@@ -156,16 +160,18 @@
       "descripcion": "Le apartas un mechón de la cara. Ely se queda sin palabras un momento.",
       "afinidad": 6,
       "requiere": 50,
-      "recarga": 20
+      "recarga": 20,
+      "duracion": 9000
     },
     {
       "id": "intimidad",
       "nombre": "Noche de pasión",
       "icono": "💗",
-      "descripcion": "Requiere afinidad 80, que sea de noche y confirmar que eres mayor de edad. La pantalla se funde a negro: no se muestra nada explícito.",
+      "descripcion": "Afinidad 80, de noche y mayoría de edad. Ely apaga la antorcha y la escena se intuye en la oscuridad: corazones, respiraciones y su voz. El mod no muestra imágenes explícitas.",
       "afinidad": 10,
       "requiere": 80,
       "recarga": 60,
+      "duracion": 12000,
       "requiereNoche": true,
       "requiereAdulto": true,
       "fundido": true
